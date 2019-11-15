@@ -1,0 +1,11 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: Knative-Consumer
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://mse-679c2db0-p.eureka.mse.aliyuncs.com:8761/eureka
+instance:
+  preferIpAddress: true

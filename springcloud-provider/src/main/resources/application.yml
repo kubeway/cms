@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: Knative-Provider
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://mse-679c2db0-p.eureka.mse.aliyuncs.com:8761/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: ${KNATIVE_DOMAIN}
+    nonSecurePort: ${KNATIVE_PORT}
+#  instance:
+#    hostname: www.baidu.con
+#    nonSecurePort: 80
+
+
