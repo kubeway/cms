@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.alibaba.knative</groupId>
-    <artifactId>baseinfo</artifactId>
+    <artifactId>contactinfo</artifactId>
     <version>1.0</version>
 
     <properties>
