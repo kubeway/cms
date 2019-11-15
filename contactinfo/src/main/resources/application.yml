@@ -2,10 +2,13 @@ server:
   port: 8080
 spring:
   application:
-    name: Knative-Consumer
+    name: baseinfo
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${MSE_EUREKA_URL}
-instance:
-  preferIpAddress: true
+      defaultZone: http://${MSE_EUREKA_URL}:8761/eureka
+  instance:
+    prefer-ip-address: true
+    ip-address: ${ENDPOINT_HOST}
+    nonSecurePort: ${ENDPOINT_PORT}
+
