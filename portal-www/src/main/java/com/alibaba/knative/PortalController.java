@@ -1,6 +1,7 @@
 package com.alibaba.knative;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,23 +15,31 @@ import org.springframework.web.client.RestTemplate;
 public class PortalController {
 
     @Autowired
-    private ProviderInterface providerInterface;
+    private BaseInfoInterface baseInfoInterface;
 
     @Autowired
-    private RestTemplate restTemplate;
+    private ContactInfoInterface contactInfoInterface;
 
-    @RequestMapping(path = "/index", method = {RequestMethod.GET, RequestMethod.POST})
-    public String index() {
+    @RequestMapping(value = "/api/company/{companycode}", method = {RequestMethod.GET})
 
-        return providerInterface.hello();
-    }
+    public String company(@PathVariable String companycode) {
+        System.out.println(companycode);
 
-    @RequestMapping(path = "/index/common", method = {RequestMethod.GET, RequestMethod.POST})
-    public String indexCommon() {
-
-        String url = "http://192.168.1.106:8081/hello";
-
-        return restTemplate.getForObject(url, String.class);
+        String s = "{\n"
+                + "    \"status\": \"success\",//success, fail\n"
+                + "    \"errmsg\": \"\",// 错误信息\n"
+                + "    \"data\": {\n"
+                + "        \"name\": \"杭州科技\",\n"
+                + "        \"address\": \"西湖区xx\",\n"
+                + "        \"profile\": \"公司简介\",\n"
+                + "        \"site\": \"http://xxx\",\n"
+                + "        \"contact\":\"张三\",\n"
+                + "        \"phone\":\"0000-111111\",\n"
+                + "        \"email\":\"xxxx@t.com\"\n"
+                + "      }\n"
+                + "}";
+        System.out.println(baseInfoInterface.hello() + "===" + contactInfoInterface.hello());
+        return s;
     }
 
 }

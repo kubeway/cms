@@ -6,6 +6,6 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${MSE_EUREKA_URL}
+      defaultZone: http://mse-db297472-p.eureka.mse.aliyuncs.com:8761/eureka
 instance:
   preferIpAddress: true
