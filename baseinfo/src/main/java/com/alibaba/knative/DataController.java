@@ -1,11 +1,12 @@
 package com.alibaba.knative;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.apache.commons.io.FileUtils;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * @author caogu.wyp
@@ -14,15 +15,23 @@ import java.util.List;
 @RestController
 public class DataController {
 
-    @Autowired
-    private DiscoveryClient discoveryClient;
+    @RequestMapping(value = "/api/baseinfo")
+    public String baseinfo() throws IOException {
 
-    @RequestMapping(value = "/hello")
-    public String hello() {
-        List<String> services = discoveryClient.getServices();
-        for (String s : services) {
-            System.out.println(s);
-        }
-        return "hello spring cloud!";
+        ClassPathResource resource = new ClassPathResource("baseinfo.json");
+        File file = resource.getFile();
+        String jsonString = FileUtils.readFileToString(file);
+
+        return jsonString;
+    }
+
+    public static void main(String[] args) throws IOException {
+
+        ClassPathResource resource = new ClassPathResource("baseinfo.json");
+        File file = resource.getFile();
+        String jsonString = FileUtils.readFileToString(file);
+
+        System.out.println(jsonString);
+
     }
 }
