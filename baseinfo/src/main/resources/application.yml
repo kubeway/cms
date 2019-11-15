@@ -2,17 +2,14 @@ server:
   port: 8080
 spring:
   application:
-    name: Knative-Provider
+    name: baseinfo
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${MSE_EUREKA_URL}
+      defaultZone: http://${MSE_EUREKA_URL}:8761/eureka
   instance:
     prefer-ip-address: true
-    ip-address: ${KNATIVE_DOMAIN}
-    nonSecurePort: ${KNATIVE_PORT}
-#  instance:
-#    hostname: www.baidu.con
-#    nonSecurePort: 80
+    ip-address: ${ENDPOINT_HOST}
+    nonSecurePort: ${ENDPOINT_PORT}
 
 

@@ -2,7 +2,7 @@ server:
   port: 8080
 spring:
   application:
-    name: baseinfo
+    name: contactinfo
 eureka:
   client:
     serviceUrl:
